@@ -4,6 +4,7 @@ Email: william.ramirez@spotcloud.io
 
 '''
 
+from PIL import Image
 
 from .transforms import transforms_train, transforms_val
 
