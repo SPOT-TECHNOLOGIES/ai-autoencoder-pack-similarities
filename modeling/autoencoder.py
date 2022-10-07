@@ -1,3 +1,9 @@
+'''
+Created by: William Ramírez
+Email: william.ramirez@spotcloud.io
+
+'''
+
 class convEncoder(nn.Module):
     def __init__(self):
         super().__init__()
