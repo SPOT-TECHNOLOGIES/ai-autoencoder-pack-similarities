@@ -7,6 +7,9 @@ Email: william.ramirez@spotcloud.io
 
 from .transforms import transforms_train, transforms_val
 
+IMG_TRAIN_PATH = "datasets/train"
+IMG_VAL_PATH = "datasets/val"
+IMG_TEST_PATH = "datasets/test"
 
 def buil_data():
 
