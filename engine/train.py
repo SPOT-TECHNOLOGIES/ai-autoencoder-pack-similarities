@@ -7,11 +7,14 @@ Email: william.ramirez@spotcloud.io
 
 from .engine import convEncoder,convDecoder
 
+
+ENC_MODEL_PATH = "../outputs/weights/"
+DEC_MODEL_PATH = "../outputs/weights/"
+
 def train_step(encoder, decoder, train_loader, loss_fn, optimizer, device="cuda"):
     
     encoder.train()
     decoder.train()
-
 
     for batch_idx, (train_img, target_img) in enumerate(train_loader):
         train_img = train_img.to(device)
@@ -83,8 +86,8 @@ def train(train_loader,val_loader):
         # Simple Best Model saving
         if val_loss < max_loss:
             print("Validation Loss decreased, saving new best model")
-            torch.save(encoder.state_dict(), ENCODER_MODEL_PATH)
-            torch.save(decoder.state_dict(), DECODER_MODEL_PATH)
+            torch.save(encoder.state_dict(), ENC_MODEL_PATH)
+            torch.save(decoder.state_dict(), DEC_MODEL_PATH)
 
         print(f"Epochs = {epoch}, Validation Loss : {val_loss}")
 
