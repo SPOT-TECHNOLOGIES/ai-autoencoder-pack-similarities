@@ -7,11 +7,11 @@ Email: william.ramirez@spotcloud.io
 
 from .engine import convEncoder,convDecoder
 
-
 def train_step(encoder, decoder, train_loader, loss_fn, optimizer, device="cuda"):
     
     encoder.train()
     decoder.train()
+
 
     for batch_idx, (train_img, target_img) in enumerate(train_loader):
         train_img = train_img.to(device)
@@ -46,7 +46,7 @@ def val_step(encoder, decoder, val_loader, loss_fn, device):
     return loss.item()
 
 
-def train():
+def train(train_loader,val_loader):
 
     loss_fn = nn.MSELoss()
 
