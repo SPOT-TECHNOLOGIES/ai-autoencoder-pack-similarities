@@ -4,14 +4,14 @@ Email: william.ramirez@spotcloud.io
 
 '''
 
-BASE = "/media/william/HDD_WILL/Documents/SPOT/ai-package-similarities-pt/autoencoder/"
+BASE = "../ai-package-similarities-pt/autoencoder/"
 IMG_WIDTH = 512
 IMG_HEIGHT = 512
 IMG_TRAIN_PATH =  BASE +"data/datasets/train"
 IMG_VAL_PATH = BASE +"data/datasets/val"
 IMG_TEST_PATH =  BASE +"data/datasets/test"
-ENC_MODEL_PATH = "../outputs/weights/"
-DEC_MODEL_PATH = "../outputs/weights/"
+ENC_MODEL_PATH = BASE +"outputs/weights/"
+DEC_MODEL_PATH = BASE + "outputs/weights/"
 TRAIN_BATCH_SIZE = 32
 VAL_BATCH_SIZE = 32
 TEST_BATCH_SIZE = 32
