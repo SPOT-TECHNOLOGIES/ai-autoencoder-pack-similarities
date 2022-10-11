@@ -8,7 +8,7 @@ from PIL import Image
 
 from transforms import transforms_train, transforms_val
 from .custom_dataset import customDataset
-from config import IMG_TRAIN_PATH,IMG_VAL_PATH,IMG_TEST_PATH
+from config import *
 
 
 def buil_data():
