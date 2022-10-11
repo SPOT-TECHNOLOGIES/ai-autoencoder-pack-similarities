@@ -11,8 +11,7 @@ import torch.optim as optim
 from config import *
 from tqdm import tqdm
 
-ENC_MODEL_PATH = "../outputs/weights/"
-DEC_MODEL_PATH = "../outputs/weights/"
+
 
 def train_step(encoder, decoder, train_loader, loss_fn, optimizer, device="cuda"):
     
