@@ -5,7 +5,7 @@ Email: william.ramirez@spotcloud.io
 '''
 
 
-from .modeling import convEncoder,convDecoder
+from modeling import *
 
 
 ENC_MODEL_PATH = "../outputs/weights/"

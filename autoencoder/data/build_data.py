@@ -6,18 +6,17 @@ Email: william.ramirez@spotcloud.io
 
 from PIL import Image
 
-from .transforms import transforms_train, transforms_val
+from transforms import transforms_train, transforms_val
+from .custom_dataset import customDataset
+from config import IMG_TRAIN_PATH,IMG_VAL_PATH,IMG_TEST_PATH
 
-IMG_TRAIN_PATH = "datasets/train"
-IMG_VAL_PATH = "datasets/val"
-IMG_TEST_PATH = "datasets/test"
 
 def buil_data():
 
     print("------------ Creating Dataset ------------")
-    train_dataset = FolderDataset(IMG_TRAIN_PATH, transforms_train)
-    val_dataset = FolderDataset(IMG_VAL_PATH, transforms_val)
-    test_dataset = FolderDataset(IMG_TEST_PATH, transforms_val)
+    train_dataset = customDataset(IMG_TRAIN_PATH, transforms_train)
+    val_dataset = customDataset(IMG_VAL_PATH, transforms_val)
+    test_dataset = customDataset(IMG_TEST_PATH, transforms_val)
 
     print("------------ Dataset Created ------------")
     print("------------ Creating DataLoader ------------")

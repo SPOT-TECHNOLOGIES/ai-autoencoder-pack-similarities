@@ -3,6 +3,7 @@ Created by: William Ramírez
 Email: william.ramirez@spotcloud.io
 
 '''
+import torch.nn as nn
 
 class convEncoder(nn.Module):
     def __init__(self):
