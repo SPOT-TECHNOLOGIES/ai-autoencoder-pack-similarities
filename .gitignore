@@ -9,3 +9,5 @@ autoencoder/tests/__pycache__/
 autoencoder/outputs/
 autoencoder/config/__pycache__/
 autoencoder/__pycache__/
+api_inputs/
+api_outputs/
