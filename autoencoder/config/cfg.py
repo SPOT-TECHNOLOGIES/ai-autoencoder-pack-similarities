@@ -10,3 +10,6 @@ IMG_HEIGHT = 512
 IMG_TRAIN_PATH = "data/datasets/train"
 IMG_VAL_PATH = "data/datasets/val"
 IMG_TEST_PATH = "data/datasets/test"
+TRAIN_BATCH_SIZE = 32
+VAL_BATCH_SIZE = 32
+TEST_BATCH_SIZE = 32
