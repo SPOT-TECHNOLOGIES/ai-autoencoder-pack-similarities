@@ -9,9 +9,9 @@ from PIL import Image
 from transforms import transforms_train, transforms_val
 from .custom_dataset import customDataset
 from config import *
+import torch
 
-
-def buil_data():
+def build_data():
 
     print("------------ Creating Dataset ------------")
     train_dataset = customDataset(IMG_TRAIN_PATH, transforms_train)
@@ -30,5 +30,7 @@ def buil_data():
     test_loader = torch.utils.data.DataLoader(
         test_dataset, batch_size=TEST_BATCH_SIZE
     )
+
+    print("------------ DataLoader Created ------------")
 
     return train_loader, val_loader, test_loader

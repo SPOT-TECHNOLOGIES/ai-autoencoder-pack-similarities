@@ -5,6 +5,8 @@ Email: william.ramirez@spotcloud.io
 '''
 
 from torch.utils.data import Dataset
+import os
+from PIL import Image
 
 ## Dataset class inheritance to read collections of images from folder 
 class customDataset(Dataset):

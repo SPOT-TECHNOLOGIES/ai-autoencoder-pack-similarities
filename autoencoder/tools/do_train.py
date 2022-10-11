@@ -5,4 +5,5 @@ os.sys.path.append('/media/william/HDD_WILL/Documents/SPOT/ai-package-similariti
 from engine import *
 from data import *
 
-rain_loader, val_loader, test_loader = build_data()
+train_loader, val_loader, test_loader = build_data()
+train(train_loader,val_loader,"cpu")

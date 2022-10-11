@@ -6,7 +6,10 @@ Email: william.ramirez@spotcloud.io
 
 
 from modeling import *
-
+import torch
+import torch.optim as optim
+from config import *
+from tqdm import tqdm
 
 ENC_MODEL_PATH = "../outputs/weights/"
 DEC_MODEL_PATH = "../outputs/weights/"
@@ -49,7 +52,7 @@ def val_step(encoder, decoder, val_loader, loss_fn, device):
     return loss.item()
 
 
-def train(train_loader,val_loader):
+def train(train_loader,val_loader,device):
 
     loss_fn = nn.MSELoss()
 

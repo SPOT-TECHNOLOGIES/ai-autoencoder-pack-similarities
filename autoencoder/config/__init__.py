@@ -4,4 +4,4 @@ Email: william.ramirez@spotcloud.io
 
 '''
 
-from cfg import *
+from .cfg import *
