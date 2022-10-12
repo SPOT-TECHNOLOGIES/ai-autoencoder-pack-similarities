@@ -1,5 +1,6 @@
 # ai-autoencoder-pack-similarities
 Autoencoder-based similiraty computation for packages
+![image](https://user-images.githubusercontent.com/2066122/195456099-b57321a6-85ac-4a6a-b6eb-72bcdb6230d7.png)
 
 ## Dependencies
 - python > 3.7
