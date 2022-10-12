@@ -25,7 +25,7 @@ json file:
 }
 
 ```
-##Training
+## Training
 You can train this autoencoder using the following file format inside autoencoder/data/datasets/
 ```
 -datasets
@@ -37,3 +37,7 @@ and running:
 ```
 python autoencoder/tools/do_train.py
 ```
+
+## Request url
+
+Soon
