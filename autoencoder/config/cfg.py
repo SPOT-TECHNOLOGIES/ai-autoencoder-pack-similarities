@@ -12,6 +12,7 @@ IMG_VAL_PATH = BASE +"data/datasets/val"
 IMG_TEST_PATH =  BASE +"data/datasets/test"
 ENC_MODEL_PATH = BASE +"outputs/weights/"
 DEC_MODEL_PATH = BASE + "outputs/weights/"
+MODEL_NAME = "baseline_encoder.pt"
 TRAIN_BATCH_SIZE = 32
 VAL_BATCH_SIZE = 32
 TEST_BATCH_SIZE = 32
