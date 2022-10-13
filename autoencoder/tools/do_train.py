@@ -1,6 +1,6 @@
 import os 
 
-os.sys.path.append('../ai-package-similarities-pt/autoencoder/')
+os.sys.path.append('../ai-autoencoder-pack-similarities/autoencoder/')
 
 from engine import *
 from data import *
