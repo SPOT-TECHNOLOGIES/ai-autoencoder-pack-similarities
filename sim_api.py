@@ -3,6 +3,7 @@
 @contact: william.ramirez@spotcloud.io
 """
 
+
 import io
 import json
 
@@ -21,7 +22,7 @@ from autoencoder.utils import *
 
 app = Flask(__name__)
 
-@app.route("/package_sim",methods=['POST'])
+@app.route("/similarity",methods=['POST'])
 
 # http://ec2-52-22-86-23.compute-1.amazonaws.com:443/compare
 
@@ -68,7 +69,7 @@ def compare():
 if __name__== "__main__":
 	# app.run(debug= False, port= 6006)
 	# app.run(debug= False, port= 443,host='0.0.0.0')
-	application.run(debug= True,host='0.0.0.0', port=8082)
+	app.run(debug= True,host='0.0.0.0', port=8082)
 
 
 
