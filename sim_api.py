@@ -21,7 +21,7 @@ from autoencoder.utils import *
 
 app = Flask(__name__)
 
-@app.route("/compare",methods=['POST'])
+@app.route("/package_sim",methods=['POST'])
 
 # http://ec2-52-22-86-23.compute-1.amazonaws.com:443/compare
 
@@ -44,8 +44,12 @@ def compare():
 	img_dec2 = cv2.imdecode(im_arr2, \
 		flags=cv2.IMREAD_COLOR)[:, :, ::-1]
 
-	img_dec_res1 = cv2.resize(img_dec1, tuple([IMG_WIDTH,IMG_HEIGHT]), interpolation=cv2.INTER_CUBIC)
-	img_dec_res2 = cv2.resize(img_dec2, tuple([IMG_WIDTH,IMG_HEIGHT]), interpolation=cv2.INTER_CUBIC)
+	img_dec_res1 = cv2.resize(img_dec1, \
+		tuple([IMG_WIDTH,IMG_HEIGHT]), \
+		interpolation=cv2.INTER_CUBIC)
+	img_dec_res2 = cv2.resize(img_dec2, \
+		tuple([IMG_WIDTH,IMG_HEIGHT]), \
+		interpolation=cv2.INTER_CUBIC)
 
 	img_t1 =  torch.as_tensor(img_dec_res1.astype("float32") \
 		.transpose(2, 0, 1))
@@ -63,7 +67,8 @@ def compare():
 
 if __name__== "__main__":
 	# app.run(debug= False, port= 6006)
-	app.run(debug= False, port= 443,host='0.0.0.0')
+	# app.run(debug= False, port= 443,host='0.0.0.0')
+	application.run(debug= True,host='0.0.0.0', port=8082)
 
 
 
