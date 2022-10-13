@@ -4,7 +4,7 @@ Email: william.ramirez@spotcloud.io
 
 '''
 
-BASE = "../ai-package-similarities-pt/autoencoder/"
+BASE = "../ai-autoencoder-pack-similarities/autoencoder/"
 IMG_WIDTH = 512
 IMG_HEIGHT = 512
 IMG_TRAIN_PATH =  BASE +"data/datasets/train"
