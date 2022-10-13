@@ -68,7 +68,7 @@ def compare():
 if __name__== "__main__":
 	# app.run(debug= False, port= 6006)
 	# app.run(debug= False, port= 443,host='0.0.0.0')
-	application.run(debug= True,host='0.0.0.0', port=8082)
+	application.run(debug= True, host='0.0.0.0', port=8082)
 
 
 
