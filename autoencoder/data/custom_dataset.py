@@ -31,12 +31,11 @@ class customDataset(Dataset):
 ## Dataset class inheritance to read collections of jsons 
 class jsonDataset(Dataset):
     def __init__(self, json_file, transform=None):
-        self.cfg = cfg
         self.transform = transform
         collection_id =[]
         collection = []
-        for coll in json_file["collection"]:
-            collection_idx.append(coll["pallet_id"]) 
+        for coll in json_file["data"]["collection"]:
+            collection_id.append(coll["pallet_id"]) 
             collection.append(coll["base64"])
         self.collection_id = collection_id
         self.collection = collection
