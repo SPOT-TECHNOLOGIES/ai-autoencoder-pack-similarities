@@ -40,9 +40,10 @@ class jsonDataset(Dataset):
             collection.append(coll["base64"])
         self.collection_id = collection_id
         self.collection = collection
+        self.ncollect = len(collection)
 
     def __len__(self):
-        return len(self.all_jsons)
+        return len(self.ncollect)
 
     def __getitem__(self, idx):
         img_id = self.collection_id[idx]
