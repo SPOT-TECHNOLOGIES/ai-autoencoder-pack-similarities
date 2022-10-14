@@ -30,7 +30,7 @@ class customDataset(Dataset):
 
 ## Dataset class inheritance to read collections of jsons 
 class jsonDataset(Dataset):
-    def __init__(self, json_file,cfg, transform=None):
+    def __init__(self, json_file, transform=None):
         self.cfg = cfg
         self.transform = transform
         collection_id =[]
