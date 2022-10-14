@@ -30,31 +30,29 @@ class customDataset(Dataset):
 
 ## Dataset class inheritance to read collections of jsons 
 class jsonDataset(Dataset):
-    def __init__(self, main_dir,cfg, transform=None):
-        self.main_dir = main_dir
+    def __init__(self, json_file,cfg, transform=None):
         self.cfg = cfg
         self.transform = transform
-        self.all_jsons = sorted(os.listdir(main_dir))
-        self.index = np.arange(len(self.all_jsons))
+        collection_id =[]
+        collection = []
+        for coll in json_file["collection"]:
+            collection_idx.append(coll["pallet_id"]) 
+            collection.append(coll["base64"])
+        self.collection_id = collection_id
+        self.collection = collection
 
     def __len__(self):
         return len(self.all_jsons)
 
     def __getitem__(self, idx):
-        json_loc = os.path.join(self.main_dir, self.all_jsons[idx])
-        json_data = json.load(open(json_loc))
-        moments = json_data["moments"]
-        person_id = json_data["person_id"]
-        coverage = json_data["coverage"]
-        index = self.index[idx]
+        img_id = self.collection_id[idx]
+        img_b64 = self.collection[idx]
 
-        img_moments = []
-        for m in moments:
-            _,img = read_base64(m,self.cfg)
-            img_tensor =  torch.as_tensor(img.astype("float32").transpose(2, 0, 1))
-            img_moments.append(img_tensor)
+        _,img = read_base64(img_b64,self.cfg)
+        img_tensor =  torch.as_tensor(img.astype("float32").transpose(2, 0, 1))
         
-        # if self.transform is not None:
-        #     tensor_image = self.transform(image)
+        
+        if self.transform is not None:
+            tensor_image = self.transform(image)
 
-        return img_moments, person_id, coverage,index
+        return img_tensor, img_id
