@@ -9,11 +9,25 @@ Autoencoder-based similiraty computation for packages
 
 
 ## Inputs
-json file with two images (for now):
+json file with a query image and a collection for consulting:
 ```
-{
-"pallet_a":b64
-"pallet_b":b64
+{ "data":{
+      "query":[
+          {
+              "pallet_id": int,
+              "base64": b64
+          }
+      ]
+      "collection":[
+          {
+              "pallet_id":int,
+              "base64": b64
+          },
+          
+          ...
+      
+      ]
+  }
 }
 
 ```
@@ -22,7 +36,18 @@ json file with two images (for now):
 json file:
 ```
 {
-"similarity": float
+	"data": {
+		"similars": [
+			{
+				"pallet_id": int,   ## first similar
+				"similarity": float
+			},
+			{
+				"pallet_id": int, ## second similar
+				"similarity": float
+			}
+		]
+	}
 }
 
 ```
