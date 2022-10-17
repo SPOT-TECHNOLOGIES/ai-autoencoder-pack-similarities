@@ -18,7 +18,6 @@ def create_encoder(device):
 
 	return encoder
 
-
 def extract_image_feature(image,encoder,device):
 	# image_tensor = T.Compose([T.Resize((IMG_WIDTH,IMG_HEIGHT)),T.ToTensor()])(image)
 	# image_tensor = image_tensor.unsqueeze(0)
