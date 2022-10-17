@@ -7,8 +7,9 @@ Email: william.ramirez@spotcloud.io
 
 from sklearn.neighbors import NearestNeighbors
 import torchvision.transforms as T
+import torch
 
-def compute_similar_images(image, num_images, embedding, device):
+def compute_similar_images(image_tensor, num_images, embedding,encoder, device):
     """
     Given an image and number of similar images to search.
     Returns the num_images closest neares images.
@@ -19,15 +20,12 @@ def compute_similar_images(image, num_images, embedding, device):
     device : "cuda" or "cpu" device.
     """
     
-    # image_tensor = T.ToTensor()(image)
-    image_tensor = T.Compose([T.Resize((IMG_WIDTH,IMG_HEIGHT)),T.ToTensor()])(image)
-    image_tensor = image_tensor.unsqueeze(0)
     image_tensor = image_tensor.to(device)
     
     with torch.no_grad():
         image_embedding = encoder(image_tensor).cpu().detach().numpy()
         
-    flattened_embedding = image_embedding.reshape((image_embedding.shape[0], -1))
+    flattened_embedding = image_embedding.reshape((1, -1))
 
     knn = NearestNeighbors(n_neighbors=num_images, metric="cosine")
     knn.fit(embedding)
@@ -35,4 +33,4 @@ def compute_similar_images(image, num_images, embedding, device):
     _, indices = knn.kneighbors(flattened_embedding)
     indices_list = indices.tolist()
 
-    return indices_list
+    return indices_list,flattened_embedding
