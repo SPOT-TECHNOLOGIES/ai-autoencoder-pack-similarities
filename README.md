@@ -65,5 +65,7 @@ python autoencoder/tools/do_train.py
 ```
 
 ## Request url
+```
+https://apis.onspot.cloud/pallets-api/similarity?api-key=e6f2f9de980944d3bed7e05be8e2371d
 
-Soon
+```
