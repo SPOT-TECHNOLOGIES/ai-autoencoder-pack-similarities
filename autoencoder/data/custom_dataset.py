@@ -7,6 +7,11 @@ Email: william.ramirez@spotcloud.io
 from torch.utils.data import Dataset
 import os
 from PIL import Image
+import numpy as np
+import base64
+import cv2
+from config import *
+import torch
 
 ## Dataset class inheritance to read collections of images from folder 
 class customDataset(Dataset):
@@ -42,14 +47,17 @@ class jsonDataset(Dataset):
         self.ncollect = len(collection)
 
     def __len__(self):
-        return len(self.ncollect)
+        return self.ncollect
 
     def __getitem__(self, idx):
         img_id = self.collection_id[idx]
         img_b64 = self.collection[idx]
 
-        _,img = read_base64(img_b64,self.cfg)
-        img_tensor =  torch.as_tensor(img.astype("float32").transpose(2, 0, 1))
+        img_b64 = base64.b64decode(img_b64)
+        im_arr = np.frombuffer(img_b64,dtype = np.uint8)
+        img_dec = cv2.imdecode(im_arr, flags=cv2.IMREAD_COLOR)[:, :, ::-1]
+        img_dec_res = cv2.resize(img_dec, tuple([IMG_WIDTH,IMG_HEIGHT]), interpolation=cv2.INTER_CUBIC)
+        img_tensor =  torch.as_tensor(img_dec_res.astype("float32").transpose(2, 0, 1))
         
         
         if self.transform is not None:
