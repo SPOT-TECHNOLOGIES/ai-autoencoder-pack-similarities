@@ -32,7 +32,7 @@ json file with a query image and a collection for consulting:
 
 ```
 
-## Outputs (for now)
+## Outputs
 json file:
 ```
 {
