@@ -58,16 +58,22 @@ def compare():
 
         embedding, pallet_ids = create_embedding(encoder, collection_loader,EMBEDDING_DIM, device)
         embedding = embedding.reshape((embedding.shape[0],-1))
+        n_neighb = 2
+        if embedding.shape[0] < 2:
+            n_neighb = 1
 
-        k_idx,query_feat = compute_similar_images(query_tensor,2,\
+        k_idx,query_feat = compute_similar_images(query_tensor,n_neighb,\
                 embedding,encoder,device)
         query_feat_n = query_feat/np.linalg.norm(query_feat)
         emb_n = np.array([embedding[i,:]/np.linalg.norm(embedding[i,:]) for i in k_idx[0]])
         sim = np.matmul(query_feat_n,emb_n.transpose())
+        
+        similars = []
+        for i in range(n_neighb):
+            similars.append({"pallet_id":int(pallet_ids[k_idx[0][i]]) \
+                ,"similarity":float(sim[0][i])})
 
-        res = jsonify({"data":{"similars":[{"pallet_id":int(pallet_ids[k_idx[0][0]]) \
-                ,"similarity":float(sim[0][0])},{"pallet_id":int(pallet_ids[k_idx[0][1]]) \
-                ,"similarity":float(sim[0][1])}]}})
+        res = jsonify({"data":{"similars":similars}})
 
         return res
 
