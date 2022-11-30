@@ -53,7 +53,7 @@ def compare():
         else:
                 device = "cpu"
 
-        device = "cpu"
+        #device = "cpu"
         encoder = create_encoder(device)
 
         embedding, pallet_ids = create_embedding(encoder, collection_loader,EMBEDDING_DIM, device)
