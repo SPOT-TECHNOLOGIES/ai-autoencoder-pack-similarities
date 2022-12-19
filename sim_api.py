@@ -58,17 +58,18 @@ def compare():
 	embedding, pallet_ids = create_embedding(encoder, collection_loader,EMBEDDING_DIM, device)
 	embedding = embedding.reshape((embedding.shape[0],-1))
 
-	k_idx,query_feat = compute_similar_images(query_tensor,2,\
-		embedding,encoder,device)
-	query_feat_n = query_feat/np.linalg.norm(query_feat)
-	emb_n = np.array([embedding[i,:]/np.linalg.norm(embedding[i,:]) for i in k_idx[0]])
-	sim = np.matmul(query_feat_n,emb_n.transpose())
+	# k_idx,query_feat = compute_similar_images(query_tensor,2,\
+	# 	embedding,encoder,device)
+	# query_feat_n = query_feat/np.linalg.norm(query_feat)
+	# emb_n = np.array([embedding[i,:]/np.linalg.norm(embedding[i,:]) for i in k_idx[0]])
+	# sim = np.matmul(query_feat_n,emb_n.transpose())
 
-	res = jsonify({"data":{"similars":[{"pallet_id":int(pallet_ids[k_idx[0][0]]) \
-		,"similarity":float(sim[0][0])},{"pallet_id":int(pallet_ids[k_idx[0][1]]) \
-		,"similarity":float(sim[0][1])}]}})
+	# res = jsonify({"data":{"similars":[{"pallet_id":int(pallet_ids[k_idx[0][0]]) \
+	# 	,"similarity":float(sim[0][0])},{"pallet_id":int(pallet_ids[k_idx[0][1]]) \
+	# 	,"similarity":float(sim[0][1])}]}})
 
-	return res
+	# return res
+	return str(0)
 
 
 if __name__== "__main__":
