@@ -9,20 +9,45 @@ Autoencoder-based similiraty computation for packages
 
 
 ## Inputs
-json file with two images (for now):
+json file with a query image and a collection for consulting:
 ```
-{
-"pallet_a":b64
-"pallet_b":b64
+{ "data":{
+      "query":[
+          {
+              "pallet_id": int,
+              "base64": b64
+          }
+      ]
+      "collection":[
+          {
+              "pallet_id":int,
+              "base64": b64
+          },
+          
+          ...
+      
+      ]
+  }
 }
 
 ```
 
-## Outputs (for now)
+## Outputs
 json file:
 ```
 {
-"similarity": float
+	"data": {
+		"similars": [
+			{
+				"pallet_id": int,   ## first similar
+				"similarity": float
+			},
+			{
+				"pallet_id": int, ## second similar
+				"similarity": float
+			}
+		]
+	}
 }
 
 ```
@@ -40,5 +65,7 @@ python autoencoder/tools/do_train.py
 ```
 
 ## Request url
+```
+https://apis.onspot.cloud/pallets-api/similarity?api-key=e6f2f9de980944d3bed7e05be8e2371d
 
-Soon
+```
