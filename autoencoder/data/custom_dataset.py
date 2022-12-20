@@ -64,3 +64,33 @@ class jsonDataset(Dataset):
             tensor_image = self.transform(image)
 
         return img_tensor, img_id
+
+## Dataset class inheritance to read collections of jsons 
+class customDataset(Dataset):
+    def __init__(self, collection, transform=None):
+        self.transform = transform
+        collection_id =[]
+        imgs = []
+        for coll in collection:
+            collection_id.append(coll["pallet_id"]) 
+            imgs.append(coll["base64"])
+        self.collection_id = collection_id
+        self.imgs = imgs
+        self.ncollect = len(imgs)
+        self.labels = np.arange(self.ncollect)
+
+    def __len__(self):
+        return self.ncollect
+
+    def __getitem__(self, idx):
+        img_id = self.collection_id[idx]
+        img_b64 = self.imgs[idx]
+        label = self.labels[idx]
+
+        img_b64 = base64.b64decode(img_b64)
+        im_arr = np.frombuffer(img_b64,dtype = np.uint8)
+        img_dec = cv2.imdecode(im_arr, flags=cv2.IMREAD_COLOR)[:, :, ::-1]
+        img_dec_res = cv2.resize(img_dec, tuple([IMG_WIDTH,IMG_HEIGHT]), interpolation=cv2.INTER_CUBIC)
+        img_tensor =  torch.as_tensor(img_dec_res.astype("float32").transpose(2, 0, 1))
+        
+        return img_tensor, img_id, label 
