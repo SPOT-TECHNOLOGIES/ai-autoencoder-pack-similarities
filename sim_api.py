@@ -38,7 +38,7 @@ def compare():
 		img_bytes = base64.b64decode(query_img_b64)
 		im_arr = np.frombuffer(img_bytes,dtype = np.uint8)
 		img_dec = cv2.imdecode(im_arr, \
-				flags=cv2.IMREAD_COLOR)[:, :, ::-1]
+				flags=cv2.IMREAD_COLOR)
 		img_dec_res = cv2.resize(img_dec, \
 				tuple([IMG_WIDTH,IMG_HEIGHT]), \
 				interpolation=cv2.INTER_CUBIC)
@@ -58,7 +58,7 @@ def compare():
 		else:
 				device = "cpu"
 
-		#device = "cpu"
+		# device = "cpu"
 		
 		encoder = create_encoder(device)
 		
